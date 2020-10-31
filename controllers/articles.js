@@ -45,4 +45,15 @@ router.get('/:id', (req, res) => {
   })
 })
 
+router.post('/:id/comments', (req, res)=>{
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.body.articleId
+  })
+  .then((comment) => {
+    res.redirect('/')
+  })
+})
+
 module.exports = router
